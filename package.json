@@ -1,0 +1,21 @@
+{
+  "name": "event-emiter",
+  "version": "0.0.0",
+  "description": "Event emitters for browsers.",
+  "main": "event-emitter.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/reu/event-emitter.js"
+  },
+  "keywords": [
+    "events",
+    "emitter"
+  ],
+  "author": "Rodrigo Navarro <rnavarro1@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "uglify-js": "latest",
+    "mocha": "latest",
+    "expect.js": "latest"
+  }
+}
