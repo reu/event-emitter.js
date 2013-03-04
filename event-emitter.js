@@ -1,8 +1,8 @@
 function EventEmitter() {
-  this.callbacks = {};
 }
 
 EventEmitter.prototype.on = function(event, fn) {
+  this.callbacks = this.callbacks || {};
   this.callbacks[event] = this.callbacks[event] || [];
   this.callbacks[event].push(fn);
   return this;
@@ -23,5 +23,6 @@ EventEmitter.prototype.emit = function(event) {
 EventEmitter.prototype.trigger = EventEmitter.prototype.emit;
 
 EventEmitter.prototype.listeners = function(event) {
+  this.callbacks = this.callbacks || {};
   return this.callbacks[event] || [];
 }
