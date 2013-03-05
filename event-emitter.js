@@ -1,28 +1,32 @@
-function EventEmitter() {
-}
+(function() {
+  function EventEmitter() {
+  }
 
-EventEmitter.prototype.on = function(event, fn) {
-  this.callbacks = this.callbacks || {};
-  this.callbacks[event] = this.callbacks[event] || [];
-  this.callbacks[event].push(fn);
-  return this;
-}
+  EventEmitter.prototype.on = function(event, fn) {
+    this.callbacks = this.callbacks || {};
+    this.callbacks[event] = this.callbacks[event] || [];
+    this.callbacks[event].push(fn);
+    return this;
+  }
 
-EventEmitter.prototype.emit = function(event) {
-  var args = Array.prototype.slice.call(arguments, 1);
-  var callbacks = this.listeners(event);
-  var self = this;
+  EventEmitter.prototype.emit = function(event) {
+    var args = Array.prototype.slice.call(arguments, 1)
+      , callbacks = this.listeners(event);
 
-  callbacks.forEach(function(callback) {
-    callback.apply(self, args);
-  })
+    for (var i = 0, length = callbacks.length; i < length; i++) {
+      callbacks[i].apply(this, args);
+    }
 
-  return this;
-}
+    return this;
+  }
 
-EventEmitter.prototype.trigger = EventEmitter.prototype.emit;
+  EventEmitter.prototype.trigger = EventEmitter.prototype.emit;
 
-EventEmitter.prototype.listeners = function(event) {
-  this.callbacks = this.callbacks || {};
-  return this.callbacks[event] || [];
-}
+  EventEmitter.prototype.listeners = function(event) {
+    this.callbacks = this.callbacks || {};
+    return this.callbacks[event] || [];
+  }
+
+  if (typeof module != "undefined" && module != null) module.exports.EventEmitter = EventEmitter;
+  if (typeof window != "undefined" &&  window != null) window.EventEmitter = EventEmitter;
+})();

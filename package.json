@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "Event emitters for browsers.",
   "main": "event-emitter.js",
+  "scripts": {
+    "test": "make test"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/reu/event-emitter.js"
@@ -16,6 +19,7 @@
   "devDependencies": {
     "uglify-js": "latest",
     "mocha": "latest",
-    "expect.js": "latest"
+    "expect.js": "latest",
+    "serve": "latest"
   }
 }
