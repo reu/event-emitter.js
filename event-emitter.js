@@ -1,5 +1,12 @@
 (function() {
-  function EventEmitter() {
+  function EventEmitter(object) {
+    if (object) EventEmitter.mixin(object);
+  }
+
+  EventEmitter.mixin = function(object) {
+    for (var key in EventEmitter.prototype) {
+      object[key] = EventEmitter.prototype[key];
+    }
   }
 
   EventEmitter.prototype.on = function(event, fn) {
